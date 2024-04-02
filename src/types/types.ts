@@ -1,0 +1,1 @@
+export type AuthTypes = 'checking' | 'not-authenticated' | 'authenticated'
