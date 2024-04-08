@@ -1,13 +1,15 @@
-import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+
 import { FirebaseAuth } from "../firebase/config";
 import { login, logout } from "../store/auth";
 import { RootState } from "../store";
+import { startLoadingNotes } from "../store/journal";
+import { useAppDispatch, useAppSelector } from "./reduxHooks";
 
 export const useCheckAuth = () => {
-    const { status } = useSelector( (state: RootState) => state.auth );
-    const dispatch = useDispatch();
+    const { status } = useAppSelector( (state: RootState) => state.auth );
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         
@@ -17,6 +19,7 @@ export const useCheckAuth = () => {
             const { uid, email, displayName, photoURL } = user;
 
             dispatch( login({ uid, email, displayName, photoURL }) );
+            dispatch( startLoadingNotes() );
         });
 
     }, []);
