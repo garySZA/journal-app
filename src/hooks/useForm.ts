@@ -12,7 +12,12 @@ export const useForm = <T extends Form> (
 
     useEffect(() => {
         createValidators();
-    }, [ formState ])
+    }, [ formState ]);
+
+    useEffect(() => {
+        setFormState( initialForm );
+    }, [ initialForm ])
+    
     
     const isFormValid = useMemo(() => {
 

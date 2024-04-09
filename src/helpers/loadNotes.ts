@@ -6,6 +6,7 @@ interface FirestoreNoteData extends DocumentData {
     title: string;
     body: string;
     date: number;
+    imageUrls: string[];
 }
 
 export const loadNotes = async ( uid: string = '' ) => {
@@ -17,8 +18,8 @@ export const loadNotes = async ( uid: string = '' ) => {
     const notes: Note[] = []
 
     docs.forEach(( doc ) => {
-        const { body, date, title } = doc.data() as FirestoreNoteData;
-        notes.push({ id: doc.id, title, body, date, imageUrls: [] });
+        const { body, date, title, imageUrls } = doc.data() as FirestoreNoteData;
+        notes.push({ id: doc.id, title, body, date, imageUrls });
     });
 
     return notes;

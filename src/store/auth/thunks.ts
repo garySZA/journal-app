@@ -2,6 +2,7 @@ import { Action, ThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { checkingCredentials, login, logout } from ".";
 import { RootState } from "..";
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, signInWithGoogle } from "../../firebase/providers";
+import { clearNotesLogout } from "../journal";
 
 export const checkingAuthentication = (): ThunkAction<void, RootState, unknown, Action<string >> => {
     return async ( dispatch: ThunkDispatch<RootState, unknown, Action<string>> ) => {
@@ -50,6 +51,7 @@ export const startLogout = () => {
         
         await logoutFirebase();
 
+        dispatch( clearNotesLogout() );
         dispatch( logout({ errorMessage: null }) );
     }
 }

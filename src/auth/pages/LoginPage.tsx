@@ -10,14 +10,16 @@ import { useForm } from '../../hooks';
 import { startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth";
 import { RootState } from '../../store/store';
 
+const formData = {
+    email: '',
+    password: ''
+}
+
 export const LoginPage = () => {
     const { status, errorMessage } = useSelector( (state: RootState) => state.auth )
     const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
-    const { email, password, onInputChange } = useForm({
-        email: 'user@google.com',
-        password: '123456'
-    });
+    const { email, password, onInputChange } = useForm( formData );
 
     const isAuthenticating = useMemo( () => status === 'checkin', [status] );
 
