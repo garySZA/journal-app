@@ -1,11 +1,12 @@
 import { v2 as cloudinary } from 'cloudinary';
 
 import { fileUpload } from "../../helpers";
+import { config } from '../../config/variables';
 
 cloudinary.config({
-    cloud_name: 'dsogogeka',
-    api_key: '971256329379241',
-    api_secret: 'B8aFNgfWq2w7RjLfh-_uOdnaJLw',
+    cloud_name: config.cloud_name,
+    api_key: config.apiKeyCloud,
+    api_secret: config.apiSecret,
     secure: true
 });
 

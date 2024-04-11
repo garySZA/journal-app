@@ -13,5 +13,9 @@ jest.mock('./src/config/variables', () => ({
         storageBucket: process.env.VITE_STORAGE_BUCKET,
         messagingSenderId: process.env.VITE_MESSAGING_SENDER_ID,
         appId: process.env.VITE_APP_ID,
+
+        cloud_name: process.env.VITE_CLOUD_NAME,
+        apiKeyCloud: process.env.VITE_API_KEY_CLOUD,
+        apiSecret: process.env.VITE_API_SECRET
     }
 }));
