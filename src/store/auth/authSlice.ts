@@ -1,22 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { AuthState } from '../../types';
+
+const initialState: AuthState = {
+    status: 'checking',
+    uid: null,
+    email: null,
+    displayName: null,
+    photoUrl: null,
+    errorMessage: null
+}
 
 export const authSlice = createSlice({
     name: 'auth',
-    initialState: {
-        status: 'checking',
-        uid: null,
-        email: null,
-        displayName: null,
-        photoURL: null,
-        errorMessage: null
-    },
+    initialState,
     reducers: {
         login: ( state, { payload } ) => {
             state.status =  'authenticated';
             state.uid =  payload.uid;
             state.email =  payload.email;
             state.displayName =  payload.displayName;
-            state.photoURL =  payload.photoURL;
+            state.photoUrl =  payload.photoUrl;
             state.errorMessage =  null;
         },
 
@@ -25,8 +28,8 @@ export const authSlice = createSlice({
             state.uid =  null;
             state.email =  null;
             state.displayName =  null;
-            state.photoURL =  null;
-            state.errorMessage =  payload.errorMessage;
+            state.photoUrl =  null;
+            state.errorMessage =  payload?.errorMessage || null;
         },
 
         checkingCredentials: ( state ) => {

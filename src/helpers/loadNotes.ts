@@ -1,4 +1,4 @@
-import { DocumentData, QueryDocumentSnapshot, collection, getDocs } from "firebase/firestore/lite";
+import { DocumentData, collection, getDocs } from "firebase/firestore";
 import { FirebaseDB } from "../firebase/config";
 import { Note } from "../types";
 
