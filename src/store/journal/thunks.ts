@@ -1,6 +1,6 @@
 import { Action, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState, store } from "../store";
-import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
+import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { FirebaseDB } from "../../firebase/config";
 import { addNewEmptyNote, deleteNoteById, savingNote, setActiveNote, setNotes, setPhotosToActiveNote, setSaving, updateNote } from "./journalSlice";
 import { fileUpload, loadNotes } from "../../helpers";

@@ -21,7 +21,7 @@ export const LoginPage = () => {
 
     const { email, password, onInputChange } = useForm( formData );
 
-    const isAuthenticating = useMemo( () => status === 'checkin', [status] );
+    const isAuthenticating = useMemo( () => status === 'checking', [status] );
 
     const onSubmit = ( event: React.FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
